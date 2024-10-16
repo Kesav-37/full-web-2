@@ -1,0 +1,324 @@
+<!-- Job Listings -->
+<div id="job-listings" style="display: none;"></div>
+
+<!-- Script for Job Search -->
+<script>
+    document.getElementById('internship-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        const keyword = document.getElementById('keyword').value;
+        const category = document.getElementById('category').value;
+        const location = document.getElementById('location').value;
+
+        document.getElementById('job-listings').innerHTML = ''; // Clear previous listings
+        document.getElementById('loading-spinner').style.display = 'block'; // Show loading spinner
+
+        fetchJobListings(keyword, category, location);
+    });
+
+    async function fetchJobListings(keyword, category, location) {
+        const options = {
+            method: 'GET',
+            url: 'https://jsearch.p.rapidapi.com/estimated-salary',
+            params: {
+                job_title: keyword,
+                location: location,
+                radius: '100',
+                limit: '10' // Increased job listing limit to 10
+            },
+            headers: {
+                'x-rapidapi-key': 'f4a0d3972amsh7c94b38ca079777p17ccdfjsnac719eb7e688', // Your API key
+                'x-rapidapi-host': 'jsearch.p.rapidapi.com'
+            }
+        };
+
+        try {
+            const response = await axios.request(options);
+            displayJobListings(response.data.data);
+        } catch (error) {
+            console.error(error);
+            document.getElementById('job-listings').innerHTML = '<p>Error fetching job listings. Please try again.</p>';
+        } finally {
+            document.getElementById('loading-spinner').style.display = 'none'; // Hide loading spinner
+        }
+    }
+
+    function displayJobListings(jobs) {
+        const jobListDiv = document.getElementById('job-listings');
+        jobListDiv.style.display = 'block'; // Show job listings
+
+        if (jobs.length === 0) {
+            jobListDiv.innerHTML = '<p>No job listings found.</p>';
+            return;
+        }
+
+        jobs.forEach(job => {
+            const jobItem = document.createElement('div');
+            jobItem.className = 'job-item';
+            jobItem.innerHTML = `
+                <h3>${job.job_title}</h3>
+                <p><strong>Location:</strong> ${job.location}</p>
+                <p><strong>Publisher:</strong> <a href="${job.publisher_link}" target="_blank">${job.publisher_name}</a></p>
+                <p><strong>Salary:</strong> $${job.median_salary} ${job.salary_currency} (${job.salary_period})</p>
+            `;
+            jobListDiv.appendChild(jobItem);
+        });
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer -->
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="h5">Company</h2>
+                <ul class="list-unstyled">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Condition</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-md-3">
+                <h2 class="h5">Quick Links</h2>
+                <ul class="list-unstyled">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Condition</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-md-3">
+                <h2 class="h5">Contact</h2>
+                <p>123 Street, New York, USA</p>
+                <p>+012 345 67890</p>
+                <p>info@example.com</p>
+                <div class="social-icons">
+                    <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-light"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-light"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <h2 class="h5">Newsletter</h2>
+                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                <form class="form-inline">
+                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Your email" required>
+                    <button type="submit" class="btn btn-success mb-2">SignUp</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="mt-4 pt-4 border-top border-light">
+            <div class="d-flex justify-content-between align-items-center">
+                <p>&copy; <a href="#">Your Site Name</a>, All Rights Reserved. Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                <div class="mt-2">
+                    <a href="#" class="mr-4">Home</a>
+                    <a href="#" class="mr-4">Cookies</a>
+                    <a href="#" class="mr-4">Help</a>
+                    <a href="#">FAQs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+css
+
+
+
+
+
+General Styles
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E1F4F3;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header with navigation */
+header {
+    background-color: #333333;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+header .logo {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Main Section with Background Image */
+.main-section {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.main-section .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* opacity: 0.5; */
+}
+
+.background-text h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.background-text p {
+    font-size: 1.2em;
+}
+
+/* Search Section */
+.search-container {
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.search-container input,
+.search-container select,
+.search-container button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+.search-container input,
+.search-container select {
+    flex: 2;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(216, 210, 210, 0.1);
+}
+
+.search-container button {
+    flex: 1;
+    background-color: #20a58b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #1c8a34;
+}
+
+/* Footer */
+footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    color: white;
+    transition: transform 0.3s;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobEntry - Find The Perfect Job</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            background-image: url('your-image-url.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .search-bar {
+            background-color: #00a65a;
+            padding: 20px;
+            margin-top: -50px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .category-section {
+            padding: 50px 0;
+        }
+        .category-section h3 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .category-box {
+            border: 1px solid #eee;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+        .category-box:hover {
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .category-box i {
+            font-size: 40px;
+            color: #00a65a;
+            margin-bottom: 10px;
+        }
+        .category-box h5 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .category-box p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* background img */
+        .hero-section img {
+        width: 100%; /* Full width */
+        height: 50; /* Maintain aspect ratio */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">JobEntry</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success" href="#">Post A Job</a>
+                </li>   
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-section">
+        <!-- Add the background image in the white space -->
+        <img src="image.png" alt="Hero Image" style="width: 100%; height: auto;">
+        
+        <div class="content">
+            <button class="btn btn-primary">Search A Job</button>
+            <button class="btn btn-secondary">Find A Talent</button>
+        </div>
+    </div>
+    
+    </section>
+
+    <!-- Search Bar -->
+    <section class="search-bar">
+        <div class="container">
+            <form class="row">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Keyword">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="">Category</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Customer Service">Customer Service</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control">
+                        <option value="">Location</option>
+                        <option value="Remote">Remote</option>
+                        <option value="On-site">On-site</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-dark btn-block">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Category Section -->
+    <section class="category-section">
+        <div class="container">
+            <h3>Explore By Category</h3>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="category-box">
+                        <i class="fas fa-briefcase"></i>
+                        <h5>Marketing</h5>
+                        <p>123 Vacancy</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-box">
+                        <i class="fas fa-headset"></i>
+                        <h5>Customer Service</h5>
+                        <p>123 Vacancy</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-box">
+                        <i class="fas fa-users"></i>
+                        <h5>Human Resource</h5>
+                        <p>123 Vacancy</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-box">
+                        <i class="fas fa-tasks"></i>
+                        <h5>Project Management</h5>
+                        <p>123 Vacancy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
